@@ -65,14 +65,16 @@ Notification sent via sms
 
 ## Project Testing & Features Summary
 
-| Description | Details |
-|-------------|---------|
-|Database Setup | Created database `notification_db` with table `notification_logs` to store sent notifications. |
-|DB Connection Test | Verified database connection using `DBConnection` class with JDBC URL, username, password. |
-|Notification Test | Tested sending Email, SMS, Push notifications via `Main` class to confirm output + DB insertion. |
-|Polymorphism | Implemented `NotificationSender` interface with `EmailNotification`, `SMSNotification`, `PushNotification`. |
+| Description           | Details                                                                                                 |
+|-----------------------|---------------------------------------------------------------------------------------------------------|
+|Database Setup         | Created database `notification_db` with table `notification_logs` to store sent notifications.             |
+|DB Connection Test     | Verified database connection using `DBConnection` class with JDBC URL, username, password.               |
+|Notification Test      | Tested sending Email, SMS, Push notifications via `Main` class to confirm output + DB insertion.        |
+|Polymorphism           | Implemented `NotificationSender` interface with `EmailNotification`, `SMSNotification`, `PushNotification`.   |
 |Collections & Generics | Added `NotificationManager<T>` using `ArrayList<T>` to manage and send notifications to multiple channels. |
-|Multithreading | Implemented `NotificationTask` (Runnable) to send notifications in parallel threads. |
-|Exception Handling | Added try/catch blocks and safe database closing using try-with-resources in JDBC operations. |
-|Logging (SLF4J) | Replaced println statements with SLF4J logging for cleaner and professional output. |
-|Console Menu | Added simple console menu for user input (Email / SMS / Push / Exit) to interact with the system. |
+|Multithreading         | Implemented `NotificationTask` (Runnable) to send notifications in parallel threads.                      |
+|Exception Handling     | Added try/catch blocks and safe database closing using try-with-resources in JDBC operations.            |
+|Logging (SLF4J)        | Replaced println statements with SLF4J logging for cleaner and professional output.                      |
+|Console Menu           | Added simple console menu for user input (Email / SMS / Push / Exit) to interact with the system.        |
+
+
