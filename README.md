@@ -88,11 +88,15 @@ Notification sent via sms
 ## Output 
 
 Notification Sent Successfully
+
 Sent at: 2025-12-16T18:30:15.123
 
 id | type  | message        | receiver  |  timestamp             |    sent_at
+
 3  | email | abc@gmail.com  |  54       |  2025-11-23 02:05:58   |    2025-12-16 20:22:21
+
 2  | sms   | nitin          |  000      |  2025-11-23 01:01:34   |    2025-12-16 20:222:21
+
 1  | sms   | otp sent       |  123      |  2025-11-23 00:58:40   |    2025-12-16 20:22:21
 
 ## Project Testing & Features Summary
