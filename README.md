@@ -8,38 +8,69 @@ A Java console application for sending notifications via Email, SMS, and Push ch
 - Records every notification in a MySQL database.
 - Includes automated JUnit tests for each channel.
 
-## How To Run
-1. **Install Java 17 (or compatible version)**
-2. **Install MySQL Server**
-3. **Create the database and table**
-   - Open MySQL and run:
-     ```
-     CREATE DATABASE notifications_db;
-     USE notifications_db;
-     CREATE TABLE notifications (
-       id INT AUTO_INCREMENT PRIMARY KEY,
-       type VARCHAR(16),
-       message TEXT,
-       receiver VARCHAR(100),
-       timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-     );
-     ```
-4. **Update MySQL username/password in `DatabaseUtil.java`**
-5. **Build the project using Maven to download dependencies**
-6. **Run `Main.java` from `com.aadvik.smart_notification.main`**
-7. **Use the console menu to select notification type, enter message, receiver, and send**
+## How to Run the Project
+1. Clone the repository
+2. Import project into Eclipse as Maven Project
+3. Configure MySQL database
+4. Update DB credentials in JDBC utility class
+5. Deploy project on Apache Tomcat
+6. Access application at:
+   `http://localhost:8080/smart-notification/index.html`
+   
+## Project Architecture
+- NotificationChannel (Interface)
+- EmailNotification / SMSNotification / PushNotification (Implementations)
+- NotificationManager (Polymorphism)
+- DAO classes for database operations
+- Servlet layer for web interaction
+- JSP pages for UI
 
-## Project Structure
-- **channels/** — Channel interfaces and implementation (`EmailChannel`, `SMSChannel`, `PushChannel`)
-- **model/** — Notification data class
-- **service/** — Core logic and JDBC utility
-- **factory/** — Factory class for channels
-- **main/** — Entry point (Main.java)
-- **test/** — JUnit tests for each channel and service
+## Technologies Used
+- Java 17
+- Maven
+- MySQL
+- JDBC
+- Servlets (Jakarta Servlet API)
+- JSP
+- Eclipse IDE
+- Apache Tomcat
 
 ## Dependencies
 - [JUnit Jupiter](https://junit.org/junit5/) for unit testing
 - [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) for database access
+
+### 1. Servlet Implementation
+- Implemented `NotificationServlet` using Jakarta Servlet API
+- Handles HTTP requests and interacts with core Java logic
+- Acts as a controller between UI and backend
+
+### 2. Web-Based GUI
+- JSP-based user interface
+- Form to send notifications
+- Simple and functional UI
+
+### 3. Code Quality & Execution
+- Clean package structure
+- Well-commented classes
+- Modular and reusable code
+- Proper exception handling
+
+### 4. Innovation / Extra Effort
+- Notification logs stored in database with timestamp
+- Success page after sending notification
+- Input validation for message content
+
+## Database Design
+Table: `notifications`
+
+| Column | Description |
+|------|------------|
+| id | Primary Key |
+| type | Notification type |
+| message | Message content |
+| timestamp | Time of sending |
+| status | Sent/Failed |
+
 
 ## Example Usage
 When you run Main.java, you'll see a menu like:
@@ -56,12 +87,13 @@ Notification sent via sms
 
 ## Output 
 
-| id | message        | type  |receiver |   timestamp        |
-|----|----------------|-------|----------|--------------------|
-| 1  | abc@gmail.com  | email | 123      | 2025-11-23 00:16:22|
-| 2  | OTP sent       | sms   | 000      | 2025-11-23 00:16:24|
-| 3  | push received  | push  | 232      | 2025-11-23 00:16:26|
+Notification Sent Successfully
+Sent at: 2025-12-16T18:30:15.123
 
+id | type  | message        | receiver  |  timestamp             |    sent_at
+3  | email | abc@gmail.com  |  54       |  2025-11-23 02:05:58   |    2025-12-16 20:22:21
+2  | sms   | nitin          |  000      |  2025-11-23 01:01:34   |    2025-12-16 20:222:21
+1  | sms   | otp sent       |  123      |  2025-11-23 00:58:40   |    2025-12-16 20:22:21
 
 ## Project Testing & Features Summary
 
